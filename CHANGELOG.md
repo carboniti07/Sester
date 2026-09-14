@@ -3,6 +3,33 @@
 All notable changes to SESTER (sester) are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) · SemVer.
 
+## [0.7.0] — 2026-09-14
+
+### Added
+- **Transaction-signing interface (non-custodial contract):**
+  `sester/signer.py` — `Signer` and `ResultTransport` protocols,
+  `PreparingSigner` (deterministic batch → raw payload), and
+  `build_signed_settlement()` (batch → prepare → optional broadcast →
+  evidence). Keys never touch Sester: the signer lives on the operator's
+  side and only a ready payload crosses the boundary. Fail-closed:
+  prepare/broadcast failures raise `SettlementError` — a silent accept is
+  impossible. Without a transport, evidence returns with `broadcast: False`
+  (operator publishes through their own channel). Pinned by
+  `tests/test_signer.py` (9 acceptance legs).
+- **Fleet-lane dogfood example (production-ready template):**
+  `examples/fleet_lane/` — a real internal endpoint behind
+  `SesterMeter` with the fail-closed policy gate (`FleetPolicyMeter`),
+  env-configurable secret/quota (`.env.example`), paid-request client with
+  a `--replay` proof flag, systemd unit template, and operations README.
+  5 integration tests (`tests/test_fleet_lane.py`) pin happy-path,
+  replay, quota, policy-deny and chain integrity.
+- **Dogfood report template:** `docs/DOGFOOD_REPORT_TEMPLATE.md` — monthly
+  Show-and-tell format for the "we eat our own receipts" record.
+
+### Fixed
+- Launch Q&A templates added as an internal operating document
+  (test-name-per-answer doctrine).
+
 ## [0.6.2] — 2026-09-14
 
 ### Fixed

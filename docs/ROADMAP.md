@@ -16,12 +16,10 @@ acceptance gate (`scripts/publish_gate.sh`) before publishing.
 | **v0.5** | Hosted-facilitator service (FastAPI): verify/settle/refund + seller metering (free band, then 1% + $0.005 per event). Joint-acceptance runs with a sibling settlement system. Public release: identity migration, brand, English public surface. |
 | **v0.6** | `GET /metrics` Prometheus-text observability. Per-agent burst limiting (token-bucket, independent of daily quota). HMAC-signed evidence webhooks with receiver-side verification and retry. **First public PyPI release.** |
 | **v0.6.1** | Public-repo hygiene pass; README rendering fixes for PyPI. |
+| **v0.7.0** | Transaction-signing **interface** — non-custodial by contract: `Signer`/`ResultTransport` protocols, deterministic batch→payload preparation, fail-closed broadcast; keys never touch Sester. Fleet-lane dogfood example (production template: env management, systemd unit, replay-proof client). Dogfood report template. Warnings-as-errors test discipline. |
 
 ## In flight / next candidates
 
-- **Transaction signing interface** — optional non-custodial signer for the
-  facilitator's on-chain batches (key management stays entirely with the
-  operator).
 - **PSP adapters** — real payment-processor adapters behind the settlement-rail
   vocabulary; each stays dark until its sandbox acceptance run and signature
   vectors pass (no live rail without certification).

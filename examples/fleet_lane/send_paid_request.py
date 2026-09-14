@@ -37,12 +37,13 @@ def paid_header(agent: str, secret: str, amount: str, resource: str,
     return f"{SCHEME} {agent}:{nonce}:{amount}:{mac}"
 
 
-def call(path: str, agent: str, secret: str, amount: str = "0.05") -> dict:
+def call(path: str, agent: str, secret: str, amount: str = "0.05",
+         header: str | None = None) -> dict:
     req = urllib.request.Request(
         BASE + path,
         headers={
             "X-Sester-Agent": agent,
-            "X-Payment": paid_header(agent, secret, amount, path),
+            "X-Payment": header or paid_header(agent, secret, amount, path),
         },
     )
     try:
@@ -64,8 +65,16 @@ if __name__ == "__main__":
     ap.add_argument("--agent", default="f1-n1")
     ap.add_argument("--path", default="/telemetry")
     ap.add_argument("--amount", default="0.05")
+    ap.add_argument("--replay", action="store_true",
+                    help="aynı zarfı iki-kez gönder (2. → 402 replay-kanıtı)")
     args = ap.parse_args()
 
     secret = os.environ.get("SESTER_FLEET_SECRET", "f1-fleet-secret-2026")
-    out = call(args.path, args.agent, secret, args.amount)
+    nonce = f"{args.agent}-{int(time.time() * 1000)}-{secrets.token_hex(4)}"
+    hdr = paid_header(args.agent, secret, args.amount, args.path, nonce)
+    out = call(args.path, args.agent, secret, args.amount, header=hdr)
     print(json.dumps(out, indent=2, ensure_ascii=False))
+    if args.replay:
+        out2 = call(args.path, args.agent, secret, args.amount, header=hdr)
+        print("-- replay --")
+        print(json.dumps(out2, indent=2, ensure_ascii=False))

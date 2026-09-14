@@ -121,7 +121,7 @@ def make_og() -> None:
         d.polygon([(cx, cy - 7), (cx + 7, cy), (cx, cy + 7), (cx - 7, cy)], fill=OLD_GOLD)
         spaced_text(d, (522, y), line, f_feat, INK, 1)
         y += 44
-    tail = "v0.6.2 · APACHE-2.0"
+    tail = "v0.7.0 · APACHE-2.0"
     w = sum(f_foot.getlength(c) + 4 for c in tail) - 4
     spaced_text(d, (1240 - w, 588), tail, f_foot, OLD_GOLD, 4)
     img.save(OUT / "og.png")

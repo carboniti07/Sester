@@ -1,0 +1,23 @@
+[Unit]
+Description=SESTER fleet-lane — metered internal endpoint (dogfood)
+After=network.target
+
+[Service]
+Type=simple
+# Bu yolu ve kullanıcıyı kendi-kurulumuna göre düzenle:
+User=gokun
+WorkingDirectory=/home/gokun/projects/01_unicorn/63-Sester
+# Secret dosyadan (asla buraya yazma):
+EnvironmentFile=/home/gokun/projects/01_unicorn/63-Sester/examples/fleet_lane/.env
+ExecStart=/home/gokun/projects/01_unicorn/63-Sester/.venv/bin/uvicorn examples.fleet_lane.app:app --host 127.0.0.1 --port 8410
+Restart=on-failure
+RestartSec=3
+
+# Sertleşme: dosya-sistemi ve yetki-sınırı
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/home/gokun/projects/01_unicorn/63-Sester/examples/fleet_lane
+
+[Install]
+WantedBy=multi-user.target

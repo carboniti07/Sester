@@ -12,3 +12,5 @@ nohup.out
 *.jpg
 *.jpeg
 docs/internal/
+examples/fleet_lane/.env
+examples/fleet_lane/*.sqlite3*
