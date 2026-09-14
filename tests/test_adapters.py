@@ -222,9 +222,9 @@ def test_93_shared_wallet_quota_spans_protocols(tmp_path):
 def test_94_acp_below_seller_price_is_rejected(tmp_path):
     led, meter, _ = _meter(tmp_path)
     # line_item 0.05'ten küçük: 0.01 → satıcı-fiyatının altında
-    h = f"ACP-Session {_b64(_session(line_item={'resource': '/weather',
-                                                    'amount_minor': 10_000,
-                                                    'currency': 'USDC'}))}"
+    h = "ACP-Session " + _b64(_session(line_item={'resource': '/weather',
+                                                  'amount_minor': 10_000,
+                                                  'currency': 'USDC'}))
     status, _ = _call(meter, "/weather", {"X-Payment": h})
     # amount_minor ≥ fiyat (0.05→50_000) değil… 10_000 < 50_000 → ret
     assert status == 402
