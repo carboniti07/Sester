@@ -98,6 +98,14 @@ class PgLedger:
         if self._conn is not None and not self._conn.closed:
             self._conn.close()
 
+    def __del__(self):
+        # Güvenlik-ağı (Ledger.__del__ ile aynı disiplin): close() çağrılmadan
+        # çöp-toplanırsa bağlantıyı kapat — sunucu tarafına sızıntı gitmesin.
+        try:
+            self.close()
+        except Exception:
+            pass
+
     # ------------------------------------------------ zincir-çekirdeği
 
     def append(self, event_type: str, agent_id: str, host: str = "",

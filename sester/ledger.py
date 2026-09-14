@@ -283,3 +283,12 @@ class Ledger:
 
     def close(self) -> None:
         self.conn.close()
+
+    def __del__(self):
+        # Güvenlik-ağı: close() çağrılmadan çöp-toplanırsa bağlantıyı sessizce
+        # kapat — aksi hâlde GC-sonrası ResourceWarning doğar (ve pyproject
+        # disiplinimizde test-düşürür). Double-close güvenli (no-op).
+        try:
+            self.conn.close()
+        except Exception:
+            pass

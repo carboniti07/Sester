@@ -62,7 +62,8 @@ async def _inner_ok(scope, receive, send):
 def env(tmp_path):
     led = Ledger(tmp_path / "v060.sqlite3", secret="v060")
     m = SesterMeter(_inner_ok, led, secret="v060-secret", daily_quota=25.0)
-    return led, m
+    yield led, m
+    led.close()  # sızıntı-yok disiplini (ResourceWarning=error kuralı)
 
 
 # ---------------------------------------------------------------- adım-1: metrics
@@ -108,7 +109,7 @@ def test_metrics_exempt_and_excluded_from_itself(env):
 
 def _run_async(coro):
     import asyncio
-    return asyncio.get_event_loop_policy().new_event_loop().run_until_complete(coro)
+    return asyncio.run(coro)  # modern-arayüz (get_event_loop_policy 3.16'da kalkıyor)
 
 
 # ---------------------------------------------------------------- adım-2: burst

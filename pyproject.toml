@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sester"
-version = "0.6.1"
+version = "0.6.2"
 description = "SESTER — x402-style metering, quota, fail-closed policy and hash-chain receipts for AI-agent APIs, as one ASGI middleware."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -52,3 +52,11 @@ only-include = ["sester", "README.md", "LICENSE", "pyproject.toml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Teknik-borç disiplini: herhangi bir yeni uyarı testi DÜŞÜRÜR (fail-loud).
+# İstisna: üçüncü-taraf kütüphanelerin (starlette/fastapi testclient) bizim
+# düzeltemeyeceğimiz iki bilinen kullanımdan-kaldırma uyarısı.
+filterwarnings = [
+  "error",
+  "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+  "ignore:The anyio.abc.BlockingPortal alias is deprecated",
+]

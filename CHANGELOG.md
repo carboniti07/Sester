@@ -3,6 +3,20 @@
 All notable changes to SESTER (sester) are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) · SemVer.
 
+## [0.6.2] — 2026-09-14
+
+### Fixed
+- **Technical-debt sweep:** modernized the test helper to `asyncio.run()`
+  (the deprecated `get_event_loop_policy` pattern is slated for removal in
+  Python 3.16); added `__del__` safety nets to `Ledger` and `PgLedger` so
+  unclosed database connections cannot leak ResourceWarnings into
+  garbage-collected objects.
+- **Warnings-as-errors discipline:** `pyproject.toml` now turns any new
+  pytest warning into a test failure (fail-loud; two known third-party
+  testclient deprecations from starlette/fastapi are the only exemptions —
+  they are not fixable on our side). The rule immediately caught and fixed
+  two real leaks (see above).
+
 ## [0.6.1] — 2026-09-14
 
 - **Public-surface hygiene:** removed candidate-JPGs, legacy-identity brand
@@ -13,22 +27,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/) · SemVer.
 
 ## [0.6.0] — 2026-09-14
 
-- **Metering-metriği (adım-1):** `GET /metrics` — Prometheus-text
-  sayaçlar (requests/charges/replay-402/quota-402/rate-402/malformed-402 +
-  chain-valid gauge); 0-bağımlılık; exempt-yollar sayaç-artırmaz
+- **Metering metrics (step 1):** `GET /metrics` — Prometheus-text counters
+  (requests/charges/replay-402/quota-402/rate-402/malformed-402 + chain-valid
+  gauge); zero dependencies; exempt paths never bump counters
   (`tests/test_v060_metrics_rate.py`).
-- **Burst-limit (adım-2):** token-bucket ikinci-kapı — ajan-başı
-  `burst_capacity` (varsayılan 20) + `burst_refill_per_sec` (varsayılan 10);
-  quota'dan bağımsız; aşım → 402 `rate_limited` + ledger karar-olayı
-  (fail-closed denetim-izi).
-- **Kanıt-webhook (adım-3):** `sester/webhooks.py` — charge/settlement
-  olaylarını HMAC-SHA256-timestamp imzayla dışa-akıt; alıcı-side
-  `verify_webhook` (timestamp-penceresi + constant-time imza) + retry
-  (3× backoff) + failure-log ledger'da (`webhook_delivery` olayı);
-  0-bağımlılık (urllib).
-- **Docker demo görüntüsü:** `ghcr.io/goun7/sester-demo` (tek-komut demo;
-  Dockerfile + GHCR-workflow + healthcheck).
-- **Landing sayfası + discussions/dogfood/launch dokümantasyonu** (repo
+- **Burst limiting (step 2):** token-bucket second gate — per-agent
+  `burst_capacity` (default 20) + `burst_refill_per_sec` (default 10);
+  independent of the daily quota; over-burst → 402 `rate_limited` plus a
+  ledger decision event (fail-closed audit trail).
+- **Evidence webhooks (step 3):** `sester/webhooks.py` — charge/settlement
+  events streamed out with HMAC-SHA256-timestamp signatures; receiver-side
+  `verify_webhook` (timestamp window + constant-time compare) + retry
+  (3× backoff) + failure log in the ledger (`webhook_delivery` event);
+  zero dependencies (urllib).
+- **Docker demo image:** `ghcr.io/goun7/sester-demo` (one-command demo;
+  Dockerfile + GHCR workflow + healthcheck).
+- **Landing page + discussions/dogfood/launch documentation** (repo
+  surfaces for the public release).
 
 ## [0.5.0] — 2026-09-13
 

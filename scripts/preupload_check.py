@@ -165,5 +165,5 @@ if __name__ == "__main__":
         for e in _errors:
             print(f"  - {e}")
         sys.exit(1)
-    print("\nSONUÇ: TAMAM — `twine upload dist/sester-0.6.0*` için eşik temiz. "
+    print("\nSONUÇ: TAMAM — `twine upload dist/sester-<VERSION>*` için eşik temiz. "
           "(Son-teyit: sürüm-no'yu iki kez oku — PyPI tek-yönlüdür.)")
