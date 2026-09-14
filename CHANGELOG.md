@@ -3,6 +3,14 @@
 All notable changes to SESTER (sester) are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/) · SemVer.
 
+## [0.6.1] — 2026-09-14
+
+- **Public-surface hygiene:** removed candidate-JPGs, legacy-identity brand
+  files and workshop HTML from the public tree; internal planning docs moved
+  to the maintainers' archive (public docs stay lean and neutral).
+- **README rendering fix:** logo now renders on GitHub *and* PyPI (absolute
+  asset URLs; per-theme SVG source for GitHub). OG image regenerated for 0.6.1.
+
 ## [0.6.0] — 2026-09-14
 
 - **Metering-metriği (adım-1):** `GET /metrics` — Prometheus-text
@@ -39,7 +47,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/) · SemVer.
 - `[facilitator]` extra in `pyproject.toml` (core stays zero-dependency).
 - **S6 field-settlement (third round):** the escrow-partner's v1.3.0 applied the rail
   migration to spec (`RAILS` `sester_*` + `RAIL_ALIASES` dual-read);
-  `docs/internal/S6_ORTAK_KABUL_TENDERIX.md` freezes the counterparty-event
+  the partner's internal joint-acceptance record freezes the counterparty-event
   field set from real source (join key `nonce`; fields `offer_id`/`auth_ref`/
   `escrow_state`/`dispute_ref` = their ledger `entry_hash`);
   `tests/test_s6_joint.py` (Tenderix side) pins their escrow/dispute halves.
@@ -143,7 +151,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/) · SemVer.
   + layer-model confirmation ("ACP = checkout, AP2 = consent", Google Cloud,
   10 Jun 2026) — adapter thesis confirmed a fourth time; priorities unchanged,
   UCP on watchlist (§5).
-- Publication checklist (`docs/PUBLICATION_CHECKLIST.md`) with completed
+- release-gate checklist (maintainers' internal record) with completed
   dry-run (twine PASSED, clean-venv smoke, zero forced deps).
 
 ### Fixed

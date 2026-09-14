@@ -7,7 +7,7 @@
 ## Why dogfood first
 
 - Real traffic → real failure-paths → public fixes (each one a credibility post).
-- The S1 acceptance run already models this: `scripts/s1_acceptance.py`
+- The S1 acceptance run already models this: `scripts/s1_dogfood.py`
   charges a fleet-agent against a daily band; moving it from test-harness to
   running service is mostly packaging.
 - Content flywheel: every dogfood incident becomes a "we hit X, here's the

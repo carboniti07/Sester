@@ -3,7 +3,7 @@
 > 63 · Agent Commerce Stack'in ürün-adı **SESTER** (kesin, 2026-09-13).
 > Kimlik-tarihi ve donuk-alan kararları: identity history record.
 > **v2-marka (2026-09-14): "Chain-S" (aday-E) kurucu + ajan ortak-seçimi ile
-> kabul edildi** — v1 halka-sikke markası (`sester-mark.svg`) arşive düştü.
+> kabul edildi** — v1 halka-sikke markası (sester-mark.svg) arşivde durur.
 
 ## 1) İsim-gerekçe
 
@@ -69,7 +69,7 @@ potrace-disiplini için ölçüm round-trip'tir.
 | `../sester/panel.py MARK_SVG` | Panel/ürün içi gömülü kopya (v2 ile senkron) |
 | `sester-mark.svg` | **Arşiv** — v1 halka-sikke markası (kullanılmaz) |
 | `LOGO_PROMPT_CHATGPT_v2.md` | Atölye-prompt'u + seçim-kriterleri + seçim-tablosu (süreç-kanıtı; kaynak-sayfa `logo.png` seçim-sonrası arşivden çıkarıldı — sdist-bloat/public-temizliği) |
-| Arşiv | `pugio-mark.svg`, `pugio-avatar.png`, `sester_*_1789296*.jpg` — kullanılmaz |
+| Arşiv | eski-kimlik markaları (pugio-*) + aday-JPG'ler public-ağaçtan çıkarıldı — yalnız koruyucu-arşivde |
 
 ## 6) Donuk-alan notu
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SESTER yayın-kapısı — tek-komut tam-denetim (docs/PUBLICATION_CHECKLIST.md §gate)
+# SESTER yayın-kapısı — tek-komut tam-denetim (maintainers' internal release checklist)
 #
 # Kullanım:
 #   bash scripts/publish_gate.sh                      # yalnız yerel-kapı (test/derleme/E2E)

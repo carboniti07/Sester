@@ -48,7 +48,7 @@
 > MERGEN; 85 klasörleşmemiş); 64'ün `pugio_*`→`sester_*` ray-önek geçişi
 > ONAYLANDI — şart: bridge_version=2 + çift-ad-okuma + tek-commit (63'ün donuk
 > `pugio0`/`pugio_bundle` alanlarından AYRI kavram; çakışma yok). Resmî not:
-> `escrow-partner (64)/docs/internal/63_SESTER_ALINAN_NOT.md`. Kardeş-repo konumları
+> the escrow-partner's internal acknowledgment note. Kardeş-repo konumları
 > `workspace/`'a bağlandı; Tamga-alıcısı `source` geri-uyumu giderildi.
 > **S5+S6 (2026-09-13):** hosted-facilitator MVP kodlandı (`sester/facilitator_svc/`;
 > verify/settle/refund + satıcı-metering + batch; test_186–201) — S6 ortak-

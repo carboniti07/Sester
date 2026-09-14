@@ -109,7 +109,7 @@ içi kontrat).
    doğrulama-makbuzu üretir   (test_136–140: temiz→SAĞLAM+makbuz, kazınmış→RED
    makbuz-üretimsiz, başlık-yalanı→RED). 63↔81 kontratı iki-ucundan canlı.
 5. **S5 (tanım 2026-09-13; kodlandı aynı gün):** Hosted-facilitator MVP
-   (MONETIZATION lane-1) — verify/settle/refund-servisi + satıcı-metering'i
+   (monetization lane-1) — verify/settle/refund-servisi + satıcı-metering'i
    (dogfood) + settlement-batch entegrasyonu; tasarım+test-haritası:
    `docs/S5_FACILITATOR_MILESTONE.md`, ortak-sözleşme: `docs/S6_JOINT_ACCEPTANCE.md`
    (escrow-partner (64) ile; 63-tarafı test_186–201 kodlu). Durum: **kodlandı —

@@ -85,7 +85,7 @@ Kill kriteri: 2-3 vitrin kurulumundan ≥2 aktif demo çıkmazsa → B-katı don
 sadece spec/sinıf kütüphanesi olarak devam.
 
 **Ölçüm/kanıt planı:** vitrin benimseme (kurulum→aktif-demo sayıları) haftalık
-→ `docs/adoption_log.md`; protokol-teyit arşivi → protocol survey_TABLOSU §4
+→ maintainers' adoption record; protocol confirmations → protocol-survey table §4
 (tarihli); kural-DSL test vektörleri → SPEND_POLICY_V0.md §4. Sonuç: **10/10
 unsur dolu → başlama izni: 81 sonrası B-blok sırası.**
 
