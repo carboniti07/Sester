@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issue
+    url: https://github.com/goun7/sester/security/advisories/new
+    about: Fail-closed bypass findings (replay / quota / signature evasion) go here — never in a public issue

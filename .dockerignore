@@ -1,0 +1,8 @@
+# image context: package + README/LICENSE only (pyproject copied explicitly)
+*
+!pyproject.toml
+!README.md
+!LICENSE
+!sester
+sester/__pycache__
+sester/**/__pycache__

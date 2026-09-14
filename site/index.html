@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SESTER — Metering, Quota, Fail-Closed Policy &amp; Verifiable Receipts for AI-Agent APIs</title>
+<meta name="description" content="One ASGI middleware that plugs x402-style metering, quotas, fail-closed spend policy and hash-chain receipts into your AI-agent API. Zero required dependencies.">
+<link rel="icon" href="assets/avatar.png">
+<style>
+:root{--ink:#171717;--paper:#F5F0E4;--gold:#B8860B;--ink2:#3d3a33}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+header{padding:72px 0 40px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+header img.mark{width:96px;height:96px;border-radius:20px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.1;letter-spacing:.5px}
+h1 small{display:block;font-size:14px;font-weight:500;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.tag{font-size:18px;color:var(--ink2);max-width:640px;margin:18px 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+a.btn{display:inline-block;padding:10px 18px;border:2px solid var(--ink);border-radius:10px;color:var(--ink);text-decoration:none;font-weight:600}
+a.btn.gold{background:var(--gold);border-color:var(--gold);color:#fff}
+a.btn:hover{transform:translateY(-1px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:32px 0}
+.card{border:2px solid var(--ink);border-radius:14px;padding:20px;background:#fff8}
+.card h3{margin-bottom:8px;font-size:18px}
+.card code{background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 7px;font-size:13px}
+pre{background:var(--ink);color:var(--paper);border-radius:12px;padding:18px;overflow:auto;font-size:14px;line-height:1.5;margin:12px 0}
+section{padding:36px 0;border-top:2px solid #17171722}
+section h2{font-size:24px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+td{border-top:1px solid #17171722;padding:8px 10px;vertical-align:top}
+td:first-child{font-weight:600;white-space:nowrap}
+.protos{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.protos span{border:2px solid var(--gold);color:var(--gold);border-radius:999px;padding:4px 14px;font-weight:700;letter-spacing:1px}
+footer{border-top:2px solid var(--ink);margin-top:40px;padding:28px 0 48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--ink2);font-size:14px}
+footer a{color:var(--ink)}
+.badge{display:inline-block;background:var(--gold);color:#fff;border-radius:6px;padding:2px 10px;font-size:12px;font-weight:700;letter-spacing:1px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img class="mark" src="assets/mark.svg" alt="Sester Chain-S mark">
+  <div>
+    <h1><small>sester</small>Agent APIs that charge,<br>limit and <em>prove</em>.</h1>
+  </div>
+</header>
+
+<p class="tag">One ASGI middleware plugs x402-style metering, per-agent quotas,
+fail-closed spend policy and a tamper-evident receipt ledger into your API —
+with <b>zero required dependencies</b>. Four agent-commerce protocols compile
+onto one wire-format core.</p>
+
+<div class="btns">
+  <a class="btn gold" href="https://github.com/goun7/Sester">GitHub</a>
+  <a class="btn" href="https://pypi.org/project/sester/">PyPI</a>
+  <a class="btn" href="https://github.com/goun7/Sester/discussions">Discussions</a>
+</div>
+
+<div class="grid">
+  <div class="card"><h3>⚖️ Meter</h3>Every paid request passes a
+    <code>402 → payment → receipt</code> handshake. Spend is metered in integer
+    minor units — no float drift, ever.</div>
+  <div class="card"><h3>🚧 Limit</h3>Per-agent daily quotas, burst caps,
+    time-window policy and human-approval escalation — decided
+    <b>before</b> your handler runs.</div>
+  <div class="card"><h3>🔗 Prove</h3>Every charge and denial lands in a
+    hash-chained ledger. Auditors verify bundles with nothing but
+    <code>sha256</code>.</div>
+</div>
+
+<section>
+  <h2>60-second demo</h2>
+<pre>docker run --rm -p 8402:8402 ghcr.io/goun7/sester-demo:latest
+# open http://127.0.0.1:8402/panel
+
+# or
+pip install "sester[demo]"
+uvicorn sester.demo_api:app --port 8402</pre>
+  Unpaid call → <b>402 challenge</b>. Paid call → <b>200 + receipt header</b>.
+  5th call → <b>402 quota exceeded</b>. The panel shows who paid what — with a
+  live chain-integrity badge.
+</section>
+
+<section>
+  <h2>The doctrine: every failure path denies spend</h2>
+  <table>
+    <tr><td>Policy file corrupt</td><td><b>DENY_ALL</b> — all spending stops</td></tr>
+    <tr><td>Unknown payment scheme</td><td>402 — never a free pass</td></tr>
+    <tr><td>Tampered evidence bundle</td><td>loud RED in verification, never a receipt</td></tr>
+    <tr><td>Replay of a spent envelope</td><td>402 — pinned by test</td></tr>
+  </table>
+  Each row is a named test in the suite. A silent fallback is treated as a
+  security bug, not a feature. <span class="badge">FAIL-CLOSED</span>
+</section>
+
+<section>
+  <h2>Protocols</h2>
+  <p>Four agent-commerce protocols, one <code>ChargeIntent → ChargeReceipt</code> core.
+     A fifth protocol is one adapter file, not a rewrite.</p>
+  <div class="protos"><span>x402</span><span>AP2</span><span>ACP</span><span>UCP</span></div>
+</section>
+
+<footer>
+  <div>SESTER — open-core, Apache-2.0</div>
+  <div><a href="https://github.com/goun7/Sester">github.com/goun7/Sester</a> ·
+       <a href="https://pypi.org/project/sester/">pypi.org/project/sester</a></div>
+</footer>
+
+</div>
+</body>
+</html>
