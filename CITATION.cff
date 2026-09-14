@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use Sester in your research, please cite it as below."
+title: "Sester: metering, quota, fail-closed policy and verifiable receipts for AI-agent APIs"
+authors:
+  - alias: goun7
+    website: "https://github.com/goun7"
+version: 0.6.1
+date-released: "2026-09-14"
+license: Apache-2.0
+repository-code: "https://github.com/goun7/Sester"
+url: "https://pypi.org/project/sester/"
+keywords:
+  - ai-agents
+  - metering
+  - payments
+  - x402
+  - asgi-middleware
+  - fintech
+abstract: >-
+  Sester is a single ASGI middleware that plugs x402-style metering,
+  quotas, fail-closed spend policy and a tamper-evident hash-chain
+  receipt ledger into AI-agent APIs. Four agent-commerce protocols
+  (x402, AP2, ACP, UCP) compile onto one wire-format core, and every
+  charge or denial produces evidence a third party can verify with
+  nothing but sha256.

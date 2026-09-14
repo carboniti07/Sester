@@ -8,10 +8,12 @@
 </picture>
 </div>
 
-![CI](https://github.com/goun7/sester/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/goun7/Sester/actions/workflows/ci.yml/badge.svg)](https://github.com/goun7/Sester/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/sester?color=gold)](https://pypi.org/project/sester/)
+[![Python](https://img.shields.io/pypi/pyversions/sester)](https://pypi.org/project/sester/)
 ![License](https://img.shields.io/badge/license-Apache--2.0-gold)
-![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-informational)
 ![Deps](https://img.shields.io/badge/forced%20deps-0-success)
+[![Discussions](https://img.shields.io/github/discussions/goun7/Sester?color=informational)](https://github.com/goun7/Sester/discussions)
 
 <p align="center"><img src="https://raw.githubusercontent.com/goun7/Sester/main/.github/assets/og.png" alt="SESTER — metering · policy · evidence" width="640"></p>
 
@@ -125,6 +127,7 @@ python scripts/dogrula.py adoption/s1-kanit-bundle.json   # receiver side — no
 | Document | Contents |
 |---|---|
 | [`docs/K0_SHARED_ENVELOPE_SPEC.md`](docs/K0_SHARED_ENVELOPE_SPEC.md) | Shared evidence-envelope wire contract (external anchors, audit feeds) |
+| [`docs/ROADMAP.md`](docs/ROADMAP.md) | Shipped by version, what's next, deliberate non-goals |
 | Architecture decision records | Scope, doctrine, deliberate limits — see the repository's decision documents |
 | Policy DSL specification | Semantics + test-vector discipline — see the repository's spec documents |
 | Execution plan | Acceptance milestones (S1–S6) — see the repository's plan documents |

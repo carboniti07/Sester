@@ -37,13 +37,14 @@
 - [ ] About/topics: description *"x402-style metering, quota, fail-closed policy
       and hash-chain receipts for AI-agent APIs — one ASGI middleware"*;
       topics: `x402` `ai-agents` `metering` `payments` `asgi-middleware` `fintech`
-- [ ] Sosyal-önizleme: Settings → Social preview → `.github/assets/og.png`
-      (kapı-adımı 4 üretilir; 1280×640); repo-avatar: `.github/assets/avatar.png`
+- [x] Sosyal-önizleme: yüklendi (2026-09-14, kullanıcı); repo-avatar:
+      yüklendi (gh-API)
 - [ ] Release: tag `v0.5.0` + not olarak `CHANGELOG.md` §0.5.0
-- [x] **(Tek-seçim) Eski-repo stratejisi: A) Rename (SEÇİLDİ).** `PUSH=1
-      REPO_RENAME=1` aynı repo'yu (995374f geçmişiyle) `goun7/sikke` →
-      `goun7/sester`'a çevirir; B) sil+taze-aç gereksiz (geçmiş zaten push'landı —
-      kanıt-değeridir)
+- [x] **(Tek-seçim) Eski-repo stratejisi: A) Rename (TAMAMLANDI 2026-09-14).**
+      Repo artık **https://github.com/goun7/Sester** ve **public**; PyPI 0.6.1
+      canlı; geçmiş noreply-yazarla yeniden-yazıldı (kişisel-e-posta yok).
+      Eski `gh repo edit goun7/sikke --name sester` komutu artık tarihî —
+      rename + visibility + PyPI-upload üçü de bitti.
 
 ## 3) PyPI — ☐ kullanıcı-eşik-kararı + kullanıcı-eylemi
 

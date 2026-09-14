@@ -22,10 +22,9 @@ gh repo edit goun7/sikke --name sester \
 
 ## 2) Görsel-kimlik — ☐ konsol (veya gh ile)
 
-- [ ] **Social preview**: `Settings` → `General` → `Social preview` →
-      `Edit` → `Upload an image` → `.github/assets/og.png` (1280×640,
-      kapı-adımı-4 üretir). Eski-Türkçe-kart varsa **Remove** ile sil.
-- [ ] **Repo-avatar**: `Settings` → `General` → yeşil kare → `Edit` →
+- [x] **Social preview** (yüklendi 2026-09-14): `Settings` → `General` →
+      `Social preview` → `.github/assets/og.png` (1280×640).
+- [x] **Repo-avatar** (yüklendi 2026-09-14, gh-API ile):
       `.github/assets/avatar.png` (512×512).
 
 ## 3) Release — ☐ tek-komut
@@ -59,8 +58,9 @@ gh release create v0.5.0 --target main --title "v0.5.0 — identity, S5 facilita
 
 ## 6) Actions — ☐ iki madde
 
-- [ ] CI billing engeli çöz: `Settings` → `Billing and plans` → spending limit
-      → sonra `gh run rerun <son-koşum-id>` (kod-hatası değil — bilinen durum).
+- [x] ~~CI billing engeli~~ — **artık gerekli değil:** repo public olduğu
+      için GitHub Actions koşumları sınırsız ve ücretsizdir (dakika-limiti
+      yalnız private depolarda geçerli). Son koşumlar yeşil.
 - [ ] `Settings` → `Actions` → `General` → Workflow permissions →
       **Read repository contents and packages permissions** (yeterli; write
       verme — kapı push'u lokalden yapar).
