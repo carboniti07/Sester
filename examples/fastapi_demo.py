@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI
+from fastapi import FastAPI
 
 from sester.ledger import Ledger
 from sester.middleware import SesterMeter
